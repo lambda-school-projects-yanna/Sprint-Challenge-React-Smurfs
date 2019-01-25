@@ -1,15 +1,27 @@
 import React from 'react';
+import styled from 'styled-components'; 
+
+const SmurfDiv = styled.div`{
+  border: solid gray 1px;
+  width: 20%;
+  height: 180px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center
+}`
 
 const Smurf = props => {
   return (
-    <div className="Smurf">
+    <SmurfDiv>
       <h3>{props.name}</h3>
       <strong>{props.height} tall</strong>
       <p>{props.age} smurf years old</p>
       <button onClick={()=>{
         props.deleteSmurf(props.id)
       }}>Delete me?</button>
-    </div>
+    </SmurfDiv>
   );
 };
 

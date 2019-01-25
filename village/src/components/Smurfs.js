@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Smurf from './Smurf';
+import styled from 'styled-components'; 
+
+const SmurfsDiv = styled.div`{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}`
+
 
 class Smurfs extends Component {
 
@@ -13,9 +22,7 @@ class Smurfs extends Component {
 
   render() {
     return (
-      <div className="Smurfs">
-        <h1>Smurf Village</h1>
-        <ul>
+      <SmurfsDiv>
           {this.props.smurfs.map(smurf => {
             return (
               <Smurf
@@ -28,8 +35,7 @@ class Smurfs extends Component {
               />
             );
           })}
-        </ul>
-      </div>
+      </SmurfsDiv>
     );
   }
 }
