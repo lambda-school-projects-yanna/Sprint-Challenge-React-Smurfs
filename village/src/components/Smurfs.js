@@ -17,7 +17,18 @@ class Smurfs extends Component {
     axios
       .delete(`http://localhost:3333/smurfs/${id}`)
       .catch(err => console.log(err));
-      window.location.reload()
+      window.location.reload();
+  }
+
+  editSmurf(id) {
+    axios
+      .put(`http://localhost:3333/smurfs/${id}`, {
+        name: prompt('Smurf name'),
+        age: prompt('Smurf age'),
+        height: prompt('Smurf height'),
+      })
+      .catch(err => console.log(err));
+      window.location.reload();
   }
 
   render() {
@@ -32,6 +43,7 @@ class Smurfs extends Component {
                 height={smurf.height}
                 key={smurf.id}
                 deleteSmurf={this.deleteSmurf}
+                editSmurf={this.editSmurf}
               />
             );
           })}

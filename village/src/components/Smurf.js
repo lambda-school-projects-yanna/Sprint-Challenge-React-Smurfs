@@ -21,6 +21,9 @@ const Smurf = props => {
       <button onClick={()=>{
         props.deleteSmurf(props.id)
       }}>Delete me?</button>
+      <button onClick={()=>{
+        props.editSmurf(props.id)
+      }}>Edit me?</button>
     </SmurfDiv>
   );
 };
