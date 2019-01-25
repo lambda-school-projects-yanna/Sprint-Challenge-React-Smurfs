@@ -44,6 +44,7 @@ class SmurfForm extends Component {
       age: '',
       height: '',
     });
+    alert('Smurf added! Return home to see the village')
     window.location.reload();
   }
 
