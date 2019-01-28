@@ -1,4 +1,27 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import styled from 'styled-components';
+
+const SmurfFormDiv = styled.form`{
+  margin-top: 2%
+  width: 100%;
+  display: flex;
+  justify-content: center
+
+  input {
+    display: flex;
+    width: 300px;
+    height: 20px;
+    justify-content: center
+    margin-bottom: 5px;
+  }
+
+  button {
+    margin-left: 30%;
+  }
+
+
+}`
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -13,12 +36,16 @@ class SmurfForm extends Component {
   addSmurf = event => {
     event.preventDefault();
     // add code to create the smurf using the api
-
+    axios
+      .post('http://localhost:3333/smurfs', this.state)
+      .catch(err => console.log(err))
     this.setState({
       name: '',
       age: '',
-      height: ''
+      height: '',
     });
+    alert('Smurf added! Return home to see the village')
+    window.location.reload();
   }
 
   handleInputChange = e => {
@@ -27,7 +54,7 @@ class SmurfForm extends Component {
 
   render() {
     return (
-      <div className="SmurfForm">
+      <SmurfFormDiv>
         <form onSubmit={this.addSmurf}>
           <input
             onChange={this.handleInputChange}
@@ -49,7 +76,7 @@ class SmurfForm extends Component {
           />
           <button type="submit">Add to the village</button>
         </form>
-      </div>
+      </SmurfFormDiv>
     );
   }
 }
